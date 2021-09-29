@@ -13,20 +13,30 @@
     <h1>
       TECHNO-DATA
     </h1>
-    {{#if logged_in}}
     <nav>
-      <button class="btn" id="logout">logout</button>
-    </nav>
+    {{#if loggedIn}}
+    <a href="/">homepage</a>
+    <a href="/dashboard">dashboard</a>
+    <a href="/dasboard/post/">post</a>
+    <button class="btn" id="logout">logout</button>
+    {{else}}
+    <a href="/">homepage</a>
+    <a href="/login" class="btn" id="login">login</a>
     {{/if}}
+       </nav>
   </header>
+
   <main class="container container-fluid mt-5">
     {{{ body }}}
   </main>
-  <footer>
-      
+
+  <footer class="footer">
+      <p>
+        
+      </p>
   </footer>
 
-  {{#if logged_in}}
+  {{#if loggedIn}}
   <script src="/js/logout.js"></script>
   {{/if}}
 </body>
