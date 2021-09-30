@@ -59,9 +59,7 @@ router.post('/', async (req, res) => {
 
     req.session.save(() => {
       req.session.user_id = userData.id;
-      //?????do I need to do pass password???
       req.session.user_name = userData.user_name;
-      req.session.password = userData.password;
       req.session.logged_in = true;
 
       res.status(200).json(userData);

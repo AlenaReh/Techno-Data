@@ -25,6 +25,7 @@ const withAuth = require('../utils/auth');
 
 router.get('/', (req, res) => {
     console.log('====reqsession====', req.session);
+    res.render('homepage'); 
 })
 
 
@@ -43,6 +44,13 @@ router.get('/login', (req, res) => {
 // })
 
 //create a roter for users to be able to sign up
+router.get('/signup', (req,res) =>{
+    if (req.session.logged_in) {
+        res.redirect('/');
+        return;
+    }
+    res.render('signup'); 
+})
 
 
 
