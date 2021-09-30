@@ -52,9 +52,6 @@ router.get('/:id', (req, res) => {
 });
 
 
-
-
-
 // POST /api/users
 router.post('/', async (req, res) => {
   try {
@@ -62,6 +59,9 @@ router.post('/', async (req, res) => {
 
     req.session.save(() => {
       req.session.user_id = userData.id;
+      //?????do I need to do pass password???
+      req.session.user_name = userData.user_name;
+      req.session.password = userData.password;
       req.session.logged_in = true;
 
       res.status(200).json(userData);
@@ -97,6 +97,7 @@ router.post('/login', async (req, res) => {
     // Create session variables based on the logged in user
     req.session.save(() => {
       req.session.user_id = userData.id;
+      req.session.user_name = userData.user_name
       req.session.logged_in = true;
       
       res.json({ user: userData, message: 'You are now logged in!' });
@@ -118,5 +119,12 @@ router.post('/logout', (req, res) => {
     res.status(404).end();
   }
 });
+
+
+//router for User.update by id???
+
+//router for User.destroy by id???
+
+
 
 module.exports = router;
