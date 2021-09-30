@@ -1,1 +1,11 @@
-<h1>Homepage </h1>
+{{#each posts as |post|}}
+
+{{>postDetails}}
+
+</div>
+
+{{else}}
+
+<h3 class="pb-4 has-text-centered">Be the first one to contribute to the Techno-Data discussions</h3>
+
+{{/each}}
