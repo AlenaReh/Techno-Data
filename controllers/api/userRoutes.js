@@ -94,8 +94,10 @@ router.post('/login', async (req, res) => {
 
     // Create session variables based on the logged in user
     req.session.save(() => {
+      console.log('=========', userData);
       req.session.user_id = userData.id;
       req.session.user_name = userData.user_name
+      // req.session.user_password = userData.user_password
       req.session.logged_in = true;
       
       res.json({ user: userData, message: 'You are now logged in!' });
@@ -120,8 +122,44 @@ router.post('/logout', (req, res) => {
 
 
 //router for User.update by id???
-
+router.put('/:id', withAuth, (req, res) => {
+  User.update(req.body, {
+      individualHooks: true,
+      where: {
+          id: req.params.id
+    }
+  })
+    .then(userData => {
+      if (!userData[0]) {
+        res.status(404).json({ message: 'No user found!' });
+        return;
+      }
+      res.json(userData);
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
 //router for User.destroy by id???
+router.delete('/:id', withAuth, (req, res) => {
+  User.destroy({
+    where: {
+      id: req.params.id
+    }
+  })
+    .then(userData => {
+      if (!userData) {
+        res.status(404).json({ message: 'No user found!' });
+        return;
+      }
+      res.json(userData);
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
 
 
 

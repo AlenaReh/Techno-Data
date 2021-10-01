@@ -39,9 +39,49 @@ router.get('/login', (req, res) => {
     res.render('login');
 });
 
-// router.get('/post/:id', (req, res) => {
-
-// })
+router.get('/post/:id', (req, res) => {
+  Post.findOne({
+    where: {
+      id: req.params.id
+    },
+    attributes: [
+      'id',
+      'title',
+      'date_created',
+      'post'
+    ],
+    include: [
+      {
+        model: Comment,
+        attributes: ['id', 'comment', 'post_id', 'user_id', 'date_created'],
+        include: {
+          model: User,
+          attributes: ['name']
+        }
+      },
+      {
+        model: User,
+        attributes: ['name']
+      }
+    ]
+  })
+  
+  .then (postData => {
+    if (!postData) {
+    res.status(404).json({ message: 'No post with this id' });
+    return;
+  }
+  const post = postData.get ({ plain: true});
+  res.render('userPost', {
+    post,
+    logged_in: req.session.logged_in
+  });
+})
+.catch(err => {
+  console.log(err);
+  res.status(500).json(err);
+})
+});
 
 //create a roter for users to be able to sign up
 router.get('/signup', (req,res) =>{
