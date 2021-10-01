@@ -5,38 +5,44 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>TECHNO-DATA</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
   <link rel="stylesheet" href="/css/style.css">
 </head>
 
-<body>
-  <header class="display-flex justify-space-between align-center p-2">
+<body class="wrapper">
+  <header>
     <h1>
       TECHNO-DATA
     </h1>
+
     <nav>
-    {{#if loggedIn}}
+
+    {{#if logged_in}}
     <a href="/">homepage</a>
-    <a href="/dashboard">dashboard</a>
-    <a href="/dasboard/post/">post</a>
+    <a href="/dashboard" class="navbar">dashboard</a>
+    <a href="/dashboard/post/">post</a>
     <button class="btn" id="logout">logout</button>
     {{else}}
     <a href="/">homepage</a>
     <a href="/login" class="btn" id="login">login</a>
+
     {{/if}}
-       </nav>
+
+    </nav>
+
   </header>
 
-  <main class="container container-fluid mt-5">
+  <main>
     {{{ body }}}
   </main>
 
   <footer class="footer">
       <p>
-        
+        Techno-Data 2021
       </p>
   </footer>
 
-  {{#if loggedIn}}
+  {{#if logged_in}}
   <script src="/js/logout.js"></script>
   {{/if}}
 </body>

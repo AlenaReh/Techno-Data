@@ -6,7 +6,6 @@
     </div>
 
     <div class="column">
-      {{!-- <span class=""> </span> --}}
     </div>
     
   </header>
@@ -16,7 +15,7 @@
             {{text}}
         </div>
             <div class="is-pulled-right">
-                <b>{{user.username}}</b> | 
-                 | {{format_date}} | <a href="/post/{{id}}">{{comments.length}} {{format_plural "comment" comments.length}}</a>
+                <b>{{user.name}}</b> | 
+                 | {{format_date createdAt}} | <a href="/post/{{id}}">{{comments.length}} {{format_plural "comment" comments.length}}</a>
             </div>
     </div>

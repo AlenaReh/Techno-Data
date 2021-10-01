@@ -24,7 +24,7 @@ router.get('/', withAuth, async (req, res) => {
   });
 
 router.get('/', (req, res) => {
-    console.log('====reqsession====', req.session);
+    // console.log('====reqsession====', req.session);
     res.render('homepage'); 
 })
 
