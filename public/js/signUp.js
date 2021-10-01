@@ -17,7 +17,7 @@ async function signupFormHandler(event) {
       });
   
       if (response.ok) {
-        console.log('success');
+        console.log('Congratulations! You can sign in with your credentials now!');
         document.location.replace('/dashboard');
       } else {
         alert(response.statusText);
@@ -26,4 +26,4 @@ async function signupFormHandler(event) {
     
 }
   
-document.querySelector('.signup').addEventListener('submit', signupFormHandler);
+document.querySelector('#signup').addEventListener('submit', signupFormHandler);

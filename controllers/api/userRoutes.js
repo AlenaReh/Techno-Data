@@ -59,7 +59,7 @@ router.post('/', async (req, res) => {
 
     req.session.save(() => {
       req.session.user_id = userData.id;
-      req.session.user_name = userData.user_name;
+      req.session.name = userData.name;
       req.session.logged_in = true;
 
       res.status(200).json(userData);
@@ -94,9 +94,9 @@ router.post('/login', async (req, res) => {
 
     // Create session variables based on the logged in user
     req.session.save(() => {
-      console.log('=========', userData);
+      // console.log('=========', userData);
       req.session.user_id = userData.id;
-      req.session.user_name = userData.user_name
+      req.session.name = userData.name
       // req.session.user_password = userData.user_password
       req.session.logged_in = true;
       

@@ -11,9 +11,9 @@
       <input class="textarea" name="text" type="text" value="{{post.text}}" />
     </div>
     <div class="is-pulled-right">
-       Post was written on {{format_date post.createdAt}}
+       Post was written on {{format_date post.date_created}}
     
-      <a href="/post/{{post.id}}">{{post.comments.length}} {{format_plural "comment" post.comments.length}}</a>
+      <a href="/post/{{post.id}}"></a>
     </div>
     <button type="submit" class="button is-success">Save</button>
     <button type="submit" class="button is-danger delete-btn">Delete</button>
