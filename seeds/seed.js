@@ -1,25 +1,24 @@
-// const sequelize = require('../config/connection');
-// const { User, Project } = require('../models');
+//Coordination of seeds files
+const sequelize = require('../config/connection');
 
-// const userData = require('./userData.json');
-// const projectData = require('./projectData.json');
+const userSeed = require('./userSeed');
+const postSeed = require('./postSeed');
+const commentSeed = require('./commentSeed');
 
-// const seedDatabase = async () => {
-//   await sequelize.sync({ force: true });
+const seedDatabase = async () => {
+    await sequelize.sync({ force: true });
+       
+    await userSeed();
+    console.log('users are SECCESSFULY seeded')
 
-//   const users = await User.bulkCreate(userData, {
-//     individualHooks: true,
-//     returning: true,
-//   });
+    await postSeed();
+    console.log('posts are SECCESSFULY seeded')
 
-//   for (const project of projectData) {
-//     await Project.create({
-//       ...project,
-//       user_id: users[Math.floor(Math.random() * users.length)].id,
-//     });
-//   }
+    await commentSeed();
+    console.log('comments are SECCESSFULY seeded')
 
-//   process.exit(0);
-// };
+    process.exit(0);
+};
 
-// seedDatabase();
+seedDatabase();
+

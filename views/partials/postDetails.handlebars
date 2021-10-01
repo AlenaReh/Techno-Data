@@ -1,14 +1,13 @@
 <div class="card mb-6">
   <header class="card-header card-header-title">
     
-        <div class="column">
-            <p></p>
-      <a href="/post/{{id}}"  class="is-capitalized is-pulled-left">{{title}} </a></p>
-      </div>
+    <div class="column">
+      <a href="/post/{{id}}"  class="is-pulled-left">{{title}}</a></p>
+    </div>
 
-      <div class="column">
-      <span class=""> </span>
-      </div>
+    <div class="column">
+      {{!-- <span class=""> </span> --}}
+    </div>
     
   </header>
 
@@ -20,5 +19,4 @@
                 <b>{{user.username}}</b> | 
                  | {{format_date}} | <a href="/post/{{id}}">{{comments.length}} {{format_plural "comment" comments.length}}</a>
             </div>
-        
     </div>
