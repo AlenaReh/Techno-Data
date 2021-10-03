@@ -33,8 +33,41 @@ router.get("/", (req, res) => {
 //find individual posts
 router.get('/id', (req, res) => {
   Post.findOne ({
-
+    where: {
+      id: req.params.id
+    },
+    attributes: [
+      'id',
+      'title',
+      'text',
+      'date_created'
+    ],
+    include: [
+      {
+        model: User,
+        attributes: ['name']
+      },
+      {
+        model: Comment,
+        attributes: ['id', 'comment', 'post_id', 'user_id', 'date_created'],
+        include: {
+          model: User,
+          attributes: ['name']
+        }
+      }
+    ]
   })
+    .then(postData => {
+      if (!postData) {
+        res.status(404).json({ message: 'No post found!' });
+        return;
+      }
+      res.json(postData);
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    });
 })
 
 //create a new post
