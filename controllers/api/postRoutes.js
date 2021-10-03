@@ -1,15 +1,34 @@
 const router = require('express').Router();
-const { Post, User,  Comment } = require('../../models');
+const { Post, User, Comment } = require('../../models');
 //req my middleware
 const withAuth = require('../../utils/auth');
 const sequelize = require('../../config/connection');
 
 //all of the posts
-router.get('/', (req, res) => {
+router.get("/", (req, res) => {
   Post.findAll({
-
+    attributes: ["id", "title", "text", "date_created"],
+    include: [
+      {
+        model: Comment,
+        attributes: ["id", "comment", "post_id", "user_id", "date_created"],
+        include: {
+          User,
+          attributes: ["name"],
+        },
+      },
+      {
+        model: User,
+        attributes: ["name"],
+      },
+    ],
   })
-})
+    .then((postData) => res.json(postData))
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
 
 //find individual posts
 router.get('/id', (req, res) => {
