@@ -13,7 +13,7 @@ router.get("/", withAuth, (req, res) => {
     include: [
       {
         model: Comment,
-        attributes: ["id", "comment", "user_id", "post_id", "date_created"],
+        attributes: ["id", "comment", "user_id", "post_id"], // "date_created"
         include: {
           model: User,
           attributes: ["name"],
@@ -35,9 +35,12 @@ router.get("/", withAuth, (req, res) => {
       res.status(500).json(err);
     });
 });
-
+router.get('/newpost', withAuth, (req,res) =>{
+  res.render('newpost'); 
+})
 //should use the ID from the session
-router.get("/post", withAuth, (req, res) => {
+router.get("/viewpost", withAuth, (req, res) => {
+  console.log("All Posts from dashboard ");
   Post.findAll({
     where: {
       user_id: req.session.user_id,
@@ -46,7 +49,7 @@ router.get("/post", withAuth, (req, res) => {
     include: [
       {
         model: Comment,
-        attributes: ["id", "text", "date_created", "user_id"],
+        attributes: ["id", "comment",  "user_id"],  ////"date_created"
         include: {
           model: User,
           attributes: ["name"],
@@ -60,6 +63,7 @@ router.get("/post", withAuth, (req, res) => {
   })
     .then((postData) => {
       const post = postData.map((post) => post.get({ plain: true }));
+      console.log("Post data on dashbaord", "date_created", post);
       res.render("post", { post, logged_in: true });
     })
     .catch((err) => {
@@ -78,7 +82,7 @@ router.get("/edit/:id", withAuth, (req, res) => {
     include: [
       {
         model: Comment,
-        attributes: ["id", "text", "post_id", "user_id", "date_created"],
+        attributes: ["id", "text", "post_id", "user_id" ],//date_created
         include: {
           model: User,
           attributes: ["name"],

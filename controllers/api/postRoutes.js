@@ -11,7 +11,7 @@ router.get("/", (req, res) => {
     include: [
       {
         model: Comment,
-        attributes: ["id", "comment", "post_id", "user_id", "date_created"],
+        attributes: ["id", "comment", "post_id", "user_id" ],//"date_created"
         include: {
           User,
           attributes: ["name"],
@@ -44,7 +44,7 @@ router.get("/id", (req, res) => {
       },
       {
         model: Comment,
-        attributes: ["id", "comment", "post_id", "user_id", "date_created"],
+        attributes: ["id", "comment", "post_id", "user_id"], //"date_created"
         include: {
           model: User,
           attributes: ["name"],
@@ -65,7 +65,7 @@ router.get("/id", (req, res) => {
     });
 });
 
-//create a new post
+//create a new post 
 router.post("/", withAuth, (req, res) => {
   Post.create({
     title: req.body.title,

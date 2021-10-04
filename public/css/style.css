@@ -98,7 +98,11 @@ p {
 }
 
 input {
-    outline-color: var(--third);
+  outline-color: var(--third);
+}
+
+input:hover{
+background-color: var(--third);
 }
 
 .footer {

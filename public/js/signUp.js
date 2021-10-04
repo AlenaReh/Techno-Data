@@ -1,3 +1,4 @@
+console.log("LOADING JS++++++")
 async function signupFormHandler(event) {
     event.preventDefault();
   
@@ -26,4 +27,4 @@ async function signupFormHandler(event) {
     
 }
   
-document.querySelector('#signup').addEventListener('submit', signupFormHandler);
+document.querySelector('#signup').addEventListener('click', signupFormHandler);
