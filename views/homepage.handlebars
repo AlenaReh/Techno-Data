@@ -1,7 +1,7 @@
 {{!-- In case there are no posts created yet --}}
 {{#each posts as |post|}}
 
-<div class="card mb-6">
+<div class="card">
   <header class="card-header card-header-title">
     
     <div class="column">
@@ -19,7 +19,7 @@
         </div>
             <div class="is-pulled-right">
                 <b>{{user.name}}</b> | 
-                 | {{format_date date_created}} | <a href="/post/{{id}}"></a>
+                 | {{format_date date_created}} | <a href="post/{{id}}"></a>
             </div>
     </div>
 

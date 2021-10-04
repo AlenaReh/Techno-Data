@@ -17,16 +17,16 @@
 
     <nav>
 
-    {{#if logged_in}}
+    {{!-- {{#if logged_in}} --}}
     <a href="/">homepage</a>
-    <a href="/dashboard" class="navbar">dashboard</a>
+    <a href="/dashboard">dashboard</a>
     <a href="/dashboard/post/">post</a>
-    <button class="btn" id="logout">logout</button>
-    {{else}}
+    <a href="/logout">logout</a>
+    {{!-- {{else}} --}}
     <a href="/">homepage</a>
     <a href="/login" class="btn" id="login">login</a>
 
-    {{/if}}
+    {{!-- {{/if}} --}}
 
     </nav>
 
