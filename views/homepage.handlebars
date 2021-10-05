@@ -1,34 +1,12 @@
-<h1>HOMEPAGE</h1>
 
-{{!-- In case there are no posts created yet --}}
 {{#each posts as |post|}}
 
-<div class="card">
-  <header class="card-header card-header-title">
-    
-    <div class="column">
-      <a href="/post/{{id}}"  class="is-pulled-left">{{title}}</a></p>
-    </div>
-
-    <div class="column">
-    </div>
-    
-  </header>
-
-    <div class="card-content">
-        <div class="content has-text-justified">
-            {{text}}
-        </div>
-            <div class="is-pulled-right">
-                <b>{{user.name}}</b> | 
-                 | {{format_date date_created}} | <a href="post/{{id}}"></a>
-            </div>
-    </div>
+{{> postDetails post}}
 
 </div>
 
 {{else}}
 
-<h3 class="pb-4 has-text-centered">Be the first one to contribute to the Techno-Data discussions</h3>
+<h3 class="has-text-centered">Be the first one to contribute to the Techno-Data discussions</h3>
 
 {{/each}}

@@ -13,7 +13,7 @@ router.get("/", withAuth, (req, res) => {
     include: [
       {
         model: Comment,
-        attributes: ["id", "comment", "user_id", "post_id"], // "date_created"
+        attributes: ["id", "comment", "user_id", "post_id", "date_created"], 
         include: {
           model: User,
           attributes: ["name"],
@@ -26,17 +26,52 @@ router.get("/", withAuth, (req, res) => {
     ],
   })
     .then((postData) => {
-      const post = postData.map((post) => post.get({ plain: true }));
+      const posts = postData.map((post) => posts.get({ plain: true }));
 
-      res.render("dashboard", { post, logged_in: true });
+      res.render("dashboard", { posts, logged_in: true });
     })
     .catch((err) => {
       console.log(err);
       res.status(500).json(err);
     });
 });
-router.get('/newpost', withAuth, (req,res) =>{
-  res.render('newpost'); 
+
+//new post router
+router.get('/newpost/', withAuth, (req,res) =>{
+  Post.findAll({
+    where: {
+      user_id: req.session.user_id
+    },
+    attributes: [
+      'id',
+      'title',
+      'text',
+      'date_created'
+    ],
+    include: [
+      {
+        model: Comment,
+        attributes: ['id', 'comment', 'post_id', 'user_id', 'date_created'],
+        include: {
+          model: User,
+          attributes: ['name']
+        }
+      },
+      {
+        model: User,
+        attributes: ['name']
+      }
+    ]
+  })
+    .then(postData => {
+      // serialize data before passing to template
+      const posts = postData.map(post => post.get({ plain: true }));
+      res.render('dashboard', { posts, logged_in: true });
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    });
 })
 //should use the ID from the session
 router.get("/viewpost", withAuth, (req, res) => {
@@ -49,7 +84,7 @@ router.get("/viewpost", withAuth, (req, res) => {
     include: [
       {
         model: Comment,
-        attributes: ["id", "comment",  "user_id"],  ////"date_created"
+        attributes: ["id", "comment",  "user_id", "date_created"],  ////"date_created"
         include: {
           model: User,
           attributes: ["name"],
@@ -63,7 +98,7 @@ router.get("/viewpost", withAuth, (req, res) => {
   })
     .then((postData) => {
       const post = postData.map((post) => post.get({ plain: true }));
-      console.log("Post data on dashbaord", "date_created", post);
+      console.log("Post data on dashbaord", post);
       res.render("post", { post, logged_in: true });
     })
     .catch((err) => {
@@ -96,7 +131,7 @@ router.get("/edit/:id", withAuth, (req, res) => {
         return;
       }
       const post = postData.get({ plain: true });
-      res.render("edit", {
+      res.render("editpost", {
         post,
         logged_in: true,
       });

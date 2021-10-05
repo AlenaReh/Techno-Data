@@ -24,7 +24,7 @@ router.get("/:id", (req, res) => {
     include: [
       {
         model: Post,
-        attributes: ["id", "title", "text", "date_created"],
+        attributes: ["id", "title", "text"],//"date_created"
       },
       // {
       //   model: Comment,
@@ -68,7 +68,7 @@ router.post("/", async (req, res) => {
 
 //login
 router.post("/login", async (req, res) => {
-  console.log("=====attempted user login", req.body);
+  // console.log("=====attempted user login", req.body);
   try {
     // Find the user who matches the posted e-mail address
     const userData = await User.findOne({ where: { email: req.body.email } });

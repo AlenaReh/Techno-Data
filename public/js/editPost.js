@@ -28,4 +28,4 @@ async function editFormHandler(event) {
   }
 
   
-  document.querySelector('.edit').addEventListener('submit', editFormHandler);
+  document.getElementById('edit').addEventListener('click', editFormHandler);

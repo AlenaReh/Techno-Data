@@ -1,7 +1,52 @@
-
+{{> postDetails post}}
 
 {{#if logged_in}}
-<div class="comment">
+<form class="comment">
+  <div>
+    <textarea name="comment"></textarea>
+  </div>
+
+  <div>
+    <button class="button is-warning ml-5 mb-5" type="submit">add comment</button>
+  </div>
+  
+</form>
+{{/if}}
+
+{{> comments post.comments}}
+
+{{#if logged_in}}
+<script src="/ja/commentPost.js"></script>
+{{/if}}
+{{!-- <div class="card">
+  <header class="card-header card-header-title">
+    
+        <div class="column">
+            <p class=" has-text-primary-light"></p>
+      <a href="/post/{{id}}"  class="is-pulled-left">{{title}} </a></p>
+      </div>
+
+      <div class="column">
+      <span class=""> </span>
+      </div>
+    
+  </header>
+
+    <div class="card-content">
+        <div class="content has-text-justified">
+            {{text}}
+        </div>
+            <div class="is-pulled-right">
+                <b>{{user.name}}</b> | 
+                 | {{format_date date_created}} | <a href="/post/{{id}}"></a>
+            </div>
+        
+    </div>
+
+<!-- displaying form and comments-->
+<!-- only display if logged in -->
+{{#if loggedIn}}
+<form class="comment">
   <div>
     <textarea name="comment-body"></textarea>
   </div>
@@ -10,7 +55,11 @@
     <button class="button" type="submit">Add a comment</button>
   </div>
   
-</div>
-
-<script src="/js/commentPost.js"></script>
+</form>
 {{/if}}
+
+{{> comments post.comments}}
+
+{{#if loggedIn}}
+<script src="/js/commentpost.js"></script>
+{{/if}} --}}

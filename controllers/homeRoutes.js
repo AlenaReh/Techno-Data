@@ -74,11 +74,11 @@ router.get("/post/:id", (req, res) => {
     where: {
       id: req.params.id,
     },
-    attributes: ["id", "title", "text", "date_created"],
+    attributes: ["id", "title", "text"],//"date_created"
     include: [
       {
         model: Comment,
-        attributes: ["id", "comment", "user_id", "post_id", "date_created"],
+        attributes: ["id", "comment", "user_id", "post_id"],//"date_created"
         include: {
           model: User,
           attributes: ["name"],
@@ -115,6 +115,39 @@ router.get("/signup", (req, res) => {
     return;
   }
   res.render("signup");
+});
+
+router.get("/", withAuth, (req, res) => {
+  console.log("All Posts from dashboard ");
+  Post.findAll({
+    // where: {
+    //   user_id: req.session.user_id,
+    // },
+    attributes: ["id", "title", "text", "date_created"],
+    include: [
+      {
+        model: Comment,
+        attributes: ["id", "comment",  "user_id", "date_created"],  ////"date_created"
+        include: {
+          model: User,
+          attributes: ["name"],
+        },
+      },
+      {
+        model: User,
+        attributes: ["name"],
+      },
+    ],
+  })
+    .then((postData) => {
+      const post = postData.map((post) => post.get({ plain: true }));
+      console.log("Post data on dashbaord", post);
+      res.render("dashboard", { post, logged_in: req.session.logged_in });
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
+    });
 });
 
 module.exports = router;

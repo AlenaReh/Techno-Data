@@ -1,4 +1,4 @@
-<div class="mb-5 pt-3">
+<div>
   <a href="/dashboard/newpost/"><button id="new-post" class="button is-pulled-right">Create a new post</button></a>
   <h2 class="title">Dashboard</h2>
   <hr>
@@ -7,12 +7,14 @@
 
 {{#each posts as |post|}}
 
-<div class="card">
+  {{> postDetails post}}
+
+{{!-- <div class="card">
   <header class="card-header">
 
     <div class="column">
       <p class="has-text-weight-normal"></p>
-      <a href="/post/{{id}}" class="has-text-weight-normal is-pulled-left">{{title}}</a></p>
+      <a href="/post/{{id}}" class="is-pulled-left">{{title}}</a></p>
     </div>
 
     <div class="column">
@@ -29,13 +31,14 @@
       <b>{{user.name}}</b>
       {{format_date date_created}} <a href="/post/{{id}}"></a>
     </div>
-  </div>
+  </div> --}}
 
   <a href="/dashboard/edit/{{post.id}}"><button class="button">Edit post</button></a>
 </div>
 {{/each}}
 
 {{else}}
-<h6 class="has-text-centered">Create your first post</h6>
+<h5 class="has-text-centered">Create your first post</h5>
 
 {{/if}}
+{{!-- <script src="/js/writepost.js"></script> --}}
