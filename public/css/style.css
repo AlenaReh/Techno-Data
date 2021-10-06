@@ -152,6 +152,10 @@ textarea {
   padding: 0rem;
 }
 
+#user-email {
+  margin-left: 2rem;
+}
+
 .footer {
   border-top: 1px solid var(--third);
   display: flex;

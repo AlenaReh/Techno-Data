@@ -43,7 +43,9 @@ This application allows people with same interests share their thoughts and idea
 
 ## Demo 
 
-  * ![demo_still](public/assets/images/demo.png)
+  * ![demo_still](public/assets/demo.png)
+  * ![demo_still](public/assets/demo2.png)
+  * ![demo_still](public/assets/demo3.png)
 
   
 ## Contributors
