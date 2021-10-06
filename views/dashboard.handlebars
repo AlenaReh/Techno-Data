@@ -9,30 +9,6 @@
 
   {{> postDetails post}}
 
-{{!-- <div class="card">
-  <header class="card-header">
-
-    <div class="column">
-      <p class="has-text-weight-normal"></p>
-      <a href="/post/{{id}}" class="is-pulled-left">{{title}}</a></p>
-    </div>
-
-    <div class="column">
-      <span> </span>
-    </div>
-
-  </header>
-
-  <div class="card-content">
-    <div class="content has-text-justified">
-      {{post}}
-    </div>
-    <div class="is-pulled-right">
-      <b>{{user.name}}</b>
-      {{format_date date_created}} <a href="/post/{{id}}"></a>
-    </div>
-  </div> --}}
-
   <a href="/dashboard/edit/{{post.id}}"><button class="button">Edit post</button></a>
 </div>
 {{/each}}

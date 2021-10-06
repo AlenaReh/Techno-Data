@@ -2,20 +2,16 @@
   <header class="card-header card-header-title">
     <div class="column">
       <p></p>
-      <a href="/post/{{id}}"  class="is-pulled-left">{{title}}</a></p>
+      <a href="/post/{{id}}"  class="is-pulled-left">{{title}} by {{user.name}} on {{format_date date_created}}</a></p>
     </div>
 
     <div class="column">
     </div>
-    
+  
   </header>
 
     <div class="card-content">
         <div class="content has-text-justified">
             {{text}}
         </div>
-            <div class="is-pulled-right">
-                <b>{{user.name}}</b>
-                {{format_date date_created}} <a href="/post/{{id}}"></a>
-            </div>
     </div>
