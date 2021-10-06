@@ -107,9 +107,24 @@ input {
 input:hover{
 background-color: var(--third);
 }
+
+textarea, input {
+  padding: .5%;
+  border-radius: 5px;
+  background-color: var(--light);
+  color:var(--dark);
+  font-size: 16px;
+}
+
+textarea {
+  min-width: 100%;
+  min-height: 100px;
+}
+
 #text {
   background-color: var(--light);
 }
+
 #title {
   background-color: var(--light);
 
