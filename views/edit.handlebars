@@ -1,6 +1,6 @@
 <article>
-  <a href="/dashboard" class="is-pulled-right">Dashboard</a>
-  <h2 class="title">Edit post</h2><hr>
+  <a href="/dashboard/" class="is-pulled-right">Dashboard</a>
+  <h2 class="title">Edit post</h2>
   <div>
     <div>
         <label for="post-title">Title</label>
@@ -15,7 +15,7 @@
       <a href="/post/{{post.id}}"></a>
     </div>
     <button type="submit" id="edit" class="button">Edit</button>
-    <button type="button" class="button delete-btn">Delete</button>
+    <button type="button" id="delete" class="button delete-btn">Delete</button>
   </div>
 </article>
 
@@ -23,4 +23,4 @@
 
 <script src="/js/editpost.js"></script>
 <script src="/js/deletepost.js"></script>
-<script src="/js/commentpost.js"></script>
+{{!-- <script src="/js/commentpost.js"></script> --}}
