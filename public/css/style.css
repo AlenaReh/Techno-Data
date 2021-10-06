@@ -73,10 +73,13 @@ label {
 }
 
 .card {
+  background-color: var(--dark);
   margin-bottom: 1em;
   margin-top: 1em;
 }
-
+div .column{
+  background-color: var(--dark);
+}
 a {
   text-decoration: none;
   font-weight: bold;
@@ -103,6 +106,13 @@ input {
 
 input:hover{
 background-color: var(--third);
+}
+#text {
+  background-color: var(--light);
+}
+#title {
+  background-color: var(--light);
+
 }
 
 .footer {
