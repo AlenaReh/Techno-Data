@@ -1,8 +1,7 @@
 console.log("Loding login JS file " )
 const loginFormHandler = async (event) => {
   event.preventDefault();
-  alert("Button clicked"); 
-
+  // alert("Button clicked"); 
   const email = document.querySelector("#user-email").value.trim();
   const password = document.querySelector("#user-password").value.trim();
   console.log(email, password); 
