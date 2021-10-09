@@ -41,38 +41,6 @@ router.get("/", withAuth, async (req, res) => {
   }
 });
 
-// router.get("/", (req, res) => {
-//   console.log("====reqsession====", req.session);
-//   Post.findAll({
-//     attributes: ["id", "title", "text", "date_created"],
-//     include: [
-//       {
-//         model: Comment,
-//         attributes: ["id", "text", "post_id", "user_id", "date_created"],
-//         include: {
-//           model: User,
-//           attributes: ["name"],
-//         },
-//       },
-//       {
-//         model: User,
-//         attributes: ["name"],
-//       },
-//     ],
-//   })
-//     .then((postData) => {
-//       const post = postData.map((post) => post.get({ plain: true }));
-//       res.render("hompage", {
-//         post,
-//         logged_in: req.session.logged_in,
-//       });
-//     })
-//     .catch((err) => {
-//       console.log(err);
-//       res.status(500).json(err);
-//     });
-// });
-
 router.get("/login", (req, res) => {
   // console.log("!!!we are at the LOGIN ROUTE");
   // If a session exists, redirect the request to the homepage
@@ -88,11 +56,11 @@ router.get("/post/:id", (req, res) => {
     where: {
       id: req.params.id,
     },
-    attributes: ["id", "title", "text"],//"date_created"
+    attributes: ["id", "title", "text", "date_created"],
     include: [
       {
         model: Comment,
-        attributes: ["id", "comment", "user_id", "post_id"],//"date_created"
+        attributes: ["id", "comment", "user_id", "post_id", "date_created"],
         include: {
           model: User,
           attributes: ["name"],
