@@ -75,8 +75,8 @@ router.get('/newpost/', withAuth, (req,res) =>{
 })
 
 //for user to be able to change/update their post
-router.get("/edit/:id", withAuth, (req, res) => {
-  Post.findeOne({
+router.get("/edit/post/:id", withAuth, (req, res) => {
+  Post.findOne({
     where: {
       id: req.params.id,
     },
@@ -84,7 +84,7 @@ router.get("/edit/:id", withAuth, (req, res) => {
     include: [
       {
         model: Comment,
-        attributes: ["id", "text", "post_id", "user_id" ],//date_created
+        attributes: ["id", "comment", "post_id", "user_id", "date_created" ],
         include: {
           model: User,
           attributes: ["name"],
@@ -98,7 +98,7 @@ router.get("/edit/:id", withAuth, (req, res) => {
         return;
       }
       const post = postData.get({ plain: true });
-      res.render("editpost", {
+      res.render("edit", {
         post,
         logged_in: true,
       });

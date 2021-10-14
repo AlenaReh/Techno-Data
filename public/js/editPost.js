@@ -1,8 +1,8 @@
 async function editFormHandler(event) {
     event.preventDefault();
-  
-    const title = document.querySelector('input[name="title"]').value;
-    const text = document.getElementById("text").value;
+    
+    const title = document.getElementById("post-title").value;
+    const text = document.getElementById("post-content").value;
 
     const id = window.location.toString().split('/')[
         window.location.toString().split('/').length - 1
@@ -20,7 +20,7 @@ async function editFormHandler(event) {
       });
       
       if (response.ok) {
-        document.location.replace('/dashboard');
+        document.location.replace('/');
       } else {
         alert(response.statusText);
       }

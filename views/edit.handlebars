@@ -4,11 +4,11 @@
   <div>
     <div>
         <label for="post-title">Title</label>
-      <input class="input" name="post-title" type="text" value="{{post.title}}" />
+      <input class="input" id="post-title" name="post-title" type="text" value="{{post.title}}" />
     </div>
     <div>
         <label for="post">Text</label>
-      <input class="textarea" name="post-content" type="text" value="{{post.text}}" />
+      <input class="textarea" id="post-content" name="post-content" type="text" value="{{post.text}}" />
     </div>
     <div class="is-pulled-right">
       Written on {{format_date post.date_created}}
